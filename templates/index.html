@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q Cure - Quantum Drug Interaction Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>💊 Q Cure</h1>
+    <p class="subtitle">
+        Quantum Drug Interaction Risk Analyzer
+    </p>
+
+    <form method="POST" action="/analyze">
+        <label>Enter Drug 1:</label>
+        <input type="text" name="drug1" placeholder="e.g. Paracetamol" required>
+
+        <label>Enter Drug 2:</label>
+        <input type="text" name="drug2" placeholder="e.g. Ibuprofen" required>
+
+        <button type="submit">⚛️ Analyze Interaction</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+        <h2>📌 Analysis Result</h2>
+
+        <p><b>Drug 1:</b> {{ result["Drug 1"] }}</p>
+        <p><b>Drug 2:</b> {{ result["Drug 2"] }}</p>
+
+        <h3>🧬 Quantum Similarity Score:</h3>
+        <p>{{ result["Quantum Chemistry Analysis"]["Quantum Similarity Score"] }}</p>
+
+        <h3>⚠️ Risk Assessment:</h3>
+        <p class="risk">{{ result["Risk Assessment"] }}</p>
+
+        <h3>🔍 Technical Details:</h3>
+        <p>{{ result["Technical Details"]["Quantum Metric"] }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
